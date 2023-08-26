@@ -14,6 +14,8 @@ import AccountDetails from '../Component/AccountDetails';
 import ChangePassword from '../Component/ChangePassword';
 import Orders from '../Component/Orders';
 import OrderDetails from '../Component/OrderDetails';
+import AddressNew from '../Component/AddressNew';
+import MyCoupons from '../Component/MyCoupons';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +36,8 @@ const MainStack = () => {
             <Stack.Screen name='ChangePassword' component={ChangePassword} />
             <Stack.Screen name='Orders' component={Orders} />
             <Stack.Screen name='OrderDetails' component={OrderDetails} />
+            <Stack.Screen name='AddressNew' component={AddressNew} />
+            <Stack.Screen name='MyCoupons' component={MyCoupons} />
 
 
         </Stack.Navigator>

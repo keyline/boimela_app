@@ -15,9 +15,9 @@ const MyAccount = ({ navigation }) => {
     const menuList = [
         { id: 1, name: 'Account Details', screen: 'AccountDetails', icon: ImagePath.user_new, params: 'MyAccount' },
         { id: 2, name: 'Change Password', screen: 'ChangePassword', icon: ImagePath.lock, params: 'MyAccount' },
-        { id: 3, name: 'Address', screen: 'address', icon: ImagePath.address, params: 'MyAccount' },
+        { id: 3, name: 'Address', screen: 'AddressNew', icon: ImagePath.address, params: 'MyAccount' },
         { id: 4, name: 'Orders', screen: 'Orders', icon: ImagePath.order, params: 'MyAccount' },
-        { id: 5, name: 'My Coupons', screen: 'my_coupon', icon: ImagePath.coupon, params: 'MyAccount' },
+        { id: 5, name: 'My Coupons', screen: 'MyCoupons', icon: ImagePath.coupon, params: 'MyAccount' },
         { id: 6, name: 'Sign Out', screen: 'sign_out', icon: ImagePath.logout, params: 'MyAccount' },
     ]
 
