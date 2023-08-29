@@ -3,7 +3,7 @@ import React from 'react'
 import { Colors } from '../../Utils/Colors'
 import { ImagePath } from '../../Utils/ImagePath'
 
-const InputField = ({ name, value, onChangeText, placeholder, passwordInput, onChangVisible, passVisible, error }) => {
+const InputField = ({ name, value, keyboardType,multiline, onChangeText, placeholder, passwordInput, onChangVisible, passVisible, error }) => {
     return (
         <View style={styles.container}>
             {name && (
@@ -16,6 +16,10 @@ const InputField = ({ name, value, onChangeText, placeholder, passwordInput, onC
                     placeholder={placeholder}
                     style={styles.input}
                     secureTextEntry={passVisible ? passVisible : false}
+                    multiline={multiline ? multiline : false}
+                    keyboardType={keyboardType?keyboardType :'default'}
+                    // number-pad
+                    // phone-pad
                 />
                 {passwordInput && (
                     <TouchableOpacity onPress={() => onChangVisible()}>
@@ -58,7 +62,7 @@ const styles = StyleSheet.create({
     },
     input: {
         color: Colors.black,
-        width: '80%',
+        width: '85%',
     },
     eye: {
         width: 25,

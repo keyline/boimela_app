@@ -6,6 +6,7 @@ import AuthContext from '../../Service/Context'
 import Apis from '../../Service/apis'
 import { useFocusEffect } from '@react-navigation/native'
 import SingleBotton from '../../Container/SingleBotton'
+import Toast from 'react-native-simple-toast'
 
 const Address = ({ navigation }) => {
 
@@ -54,6 +55,7 @@ const Address = ({ navigation }) => {
                 ...prevState,
                 loading: false,
             }))
+            Toast.show('Something Went Wrong')
         }
     })
 

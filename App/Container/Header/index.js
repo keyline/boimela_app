@@ -39,18 +39,20 @@ const Header = ({ leftIcon, leftonPress }) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.flex}>
-                <TouchableOpacity onPress={onSearch} activeOpacity={0.5} style={{ marginRight: '12%' }}>
+                <TouchableOpacity onPress={onSearch} activeOpacity={0.5} >
                     <Image source={ImagePath.search} style={styles.menu} />
                 </TouchableOpacity>
-                {context?.allData?.isLogin ?
-                    <TouchableOpacity onPress={onCart} activeOpacity={0.5}>
-                        <Image source={ImagePath.cart} style={styles.menu} />
-                    </TouchableOpacity>
-                    :
-                    <TouchableOpacity onPress={onLogin} activeOpacity={0.5} >
-                        <Image source={ImagePath.user} style={styles.menu} />
-                    </TouchableOpacity>
-                }
+                <View style={{marginLeft:15}}>
+                    {context?.allData?.isLogin ?
+                        <TouchableOpacity onPress={onCart} activeOpacity={0.5}>
+                            <Image source={ImagePath.cart} style={styles.menu} />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity onPress={onLogin} activeOpacity={0.5} >
+                            <Image source={ImagePath.user} style={styles.menu} />
+                        </TouchableOpacity>
+                    }
+                </View>
             </View>
         </View>
     )

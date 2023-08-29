@@ -69,17 +69,18 @@ export const styles = StyleSheet.create({
         width: 30,
         height: 30,
         resizeMode: 'contain',
-        // tintColor: Colors.light_blue
+        tintColor: Colors.grey
     },
     boldtxt: {
         fontWeight: 'bold',
-        color: Colors.black,
+        color: Colors.grey,
         marginLeft: 15,
         // fontSize:16
     },
     arrowicon: {
         width: 15,
         height: 15,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+        tintColor: Colors.grey
     }
 })

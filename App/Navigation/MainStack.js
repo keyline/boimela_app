@@ -16,6 +16,7 @@ import Orders from '../Component/Orders';
 import OrderDetails from '../Component/OrderDetails';
 import AddressNew from '../Component/AddressNew';
 import MyCoupons from '../Component/MyCoupons';
+import CmsPage from '../Component/CmsPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +39,7 @@ const MainStack = () => {
             <Stack.Screen name='OrderDetails' component={OrderDetails} />
             <Stack.Screen name='AddressNew' component={AddressNew} />
             <Stack.Screen name='MyCoupons' component={MyCoupons} />
-
+            <Stack.Screen name='CmsPage' component={CmsPage} />
 
         </Stack.Navigator>
     )

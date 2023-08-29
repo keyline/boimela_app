@@ -12,11 +12,14 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.white,
         width: '95%',
-        // height: '85%',
         alignSelf: 'center',
         marginVertical: '3%',
+        // height:'75%',
         borderRadius: 5,
-        paddingVertical: '4%',
+        paddingVertical: '8%',
+        // borderWidth: 1,
+        // borderColor: Colors.lightGrey,
+        // elevation: 4
         ...CommonStyles.box_Container
     },
     headingtext: {
@@ -25,23 +28,8 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center'
     },
-    content: {
-        flex: 1,
-        width: '90%',
-        alignSelf: 'center',
-        marginTop: '8%'
-    },
-    normaltxt: {
-        color: Colors.black
-    },
-    nametxt: {
-        fontWeight: 'bold',
-        color: Colors.light_blue,
-        marginBottom: '1%',
-        marginTop: '4%',
-        fontSize: 16
-    },
-    btncontent: {
-        marginTop: '6%',
+    content:{
+        paddingHorizontal:'5%',
+        paddingVertical:'2%'
     }
 })

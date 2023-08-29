@@ -1,5 +1,7 @@
+import { BASE_URL } from "./Constant"
 import { Network } from "./Network"
 import { network_Login } from "./network_Login"
+import { network_cms } from "./network_cms"
 import { network_new } from "./network_new"
 
 export default class Apis {
@@ -78,5 +80,17 @@ export default class Apis {
 
     static orderUpdate = (orderid, params) => {
         return Network('PUT', `orders/${orderid}`, params)
+    }
+
+    static countryList = (params) => {
+        return Network('GET', `data/countries`, params)
+    }
+
+    static CouponList = (params) => {
+        return network_new('GET', `wc/store/cart/coupons`, params)
+    }
+
+    static cmsPage = (params) => {
+        return network_cms('GET', `wp/v2/pages`, params)
     }
 }

@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
         fontSize: 22,
         color: Colors.bold_text,
         marginBottom: '5%',
-        textDecorationLine:'underline',
+        // textDecorationLine:'underline',
         textAlign: 'center'
     },
     bodyContent: {
@@ -55,12 +55,12 @@ export const styles = StyleSheet.create({
             }
         }),
     },
-    btmtxt:{
-        fontWeight:'bold',
-        textAlign:'center'
+    btmtxt: {
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
-    signtxt:{
-        color:Colors.light_blue,
-        textDecorationLine:'underline'
+    signtxt: {
+        color: Colors.light_blue,
+        // textDecorationLine:'underline'
     }
 })

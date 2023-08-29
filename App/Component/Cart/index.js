@@ -127,17 +127,19 @@ const Cart = ({ navigation }) => {
                     showsVerticalScrollIndicator={false}
                 />
             </View>
-            <View style={styles.btmContent}>
-                <View style={styles.btmPrice}>
-                    <ValueText name={'Subtotal'} value={'₹' + state?.data?.totals?.total_items} />
-                    <ValueText name={'Shipping'} value={'₹' + state?.data?.totals?.total_shipping} />
-                    <ValueText name={'Total'} value={'₹' + state?.data?.totals?.total_price} />
+            {(state.data) && (
+                <View style={styles.btmContent}>
+                    <View style={styles.btmPrice}>
+                        <ValueText name={'Subtotal'} value={'₹' + state?.data?.totals?.total_items} />
+                        <ValueText name={'Shipping'} value={'₹' + state?.data?.totals?.total_shipping} />
+                        <ValueText name={'Total'} value={'₹' + state?.data?.totals?.total_price} />
+                    </View>
+                    {/* <Text style={styles.totalPricetxt}>Total Price : <Text style={styles.boldtext}>₹ {state?.data?.totals?.total_price}</Text></Text> */}
+                    <TouchableOpacity onPress={onNext} activeOpacity={0.5} style={styles.btm}>
+                        <Text style={styles.btmText}>Proceed</Text>
+                    </TouchableOpacity>
                 </View>
-                {/* <Text style={styles.totalPricetxt}>Total Price : <Text style={styles.boldtext}>₹ {state?.data?.totals?.total_price}</Text></Text> */}
-                <TouchableOpacity onPress={onNext} activeOpacity={0.5} style={styles.btm}>
-                    <Text style={styles.btmText}>Proceed</Text>
-                </TouchableOpacity>
-            </View>
+            )}
             {state.loading && (
                 <Loader loading={state.loading} />
             )}

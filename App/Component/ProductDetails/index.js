@@ -158,7 +158,7 @@ const ProductDetails = ({ navigation, route }) => {
                     id: state.data?.id,
                     quantity: 1
                 }
-                console.log('addtoCartParams', JSON.stringify(params))
+                // console.log('addtoCartParams', JSON.stringify(params))
                 const response = await Apis.AddtoCart(params)
                 // if (__DEV__) {
                 //     console.log('AddToCart', JSON.stringify(response))

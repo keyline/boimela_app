@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
     boldtext: {
         color: Colors.bold_text,
         fontWeight: 'bold',
-        textAlign: 'center'
+        // textAlign: 'center'
     },
     flex: {
         flexDirection: 'row',

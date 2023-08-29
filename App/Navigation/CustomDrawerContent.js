@@ -18,6 +18,8 @@ const CustomDrawerContent = (props) => {
     { id: 3, name: 'Cart', screen: 'Cart', icon: ImagePath.cart, logiReq: true },
     { id: 4, name: 'Orders', screen: 'Orders', icon: ImagePath.order, logiReq: true },
     { id: 5, name: 'Change Password', screen: 'ChangePassword', icon: ImagePath.lock, logiReq: true },
+    { id: 6, name: 'About Us', screen: 'CmsPage', icon: ImagePath.lock, logiReq: true, params: 'about-us' },
+    { id: 7, name: 'Privacy Policy', screen: 'CmsPage', icon: ImagePath.lock, logiReq: true, params: 'privacy-policy' },
 
   ]
 
@@ -105,7 +107,11 @@ const CustomDrawerContent = (props) => {
   const onMenuPress = useCallback(async (item) => {
     // console.log('item', item)
     if (item && item.screen) {
-      props.navigation.navigate(item.screen);
+      if (item.screen == 'CmsPage') {
+        props.navigation.navigate(item.screen, { page: item.params });
+      } else {
+        props.navigation.navigate(item.screen);
+      }
     }
   })
 
