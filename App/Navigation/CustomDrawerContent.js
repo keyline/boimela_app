@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Linking } from 'react-native'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
 import { Colors } from '../Utils/Colors'
@@ -9,6 +9,7 @@ import AuthContext from '../Service/Context'
 import { getUserId } from '../Service/AsyncStorage'
 import Apis from '../Service/apis'
 import { useFocusEffect } from '@react-navigation/native'
+import { SUPORT_EMAIL, SUPORT_MESSAGE, SUPORT_PHONE } from '../Service/Constant'
 
 const CustomDrawerContent = (props) => {
 
@@ -18,8 +19,11 @@ const CustomDrawerContent = (props) => {
     { id: 3, name: 'Cart', screen: 'Cart', icon: ImagePath.cart, logiReq: true },
     { id: 4, name: 'Orders', screen: 'Orders', icon: ImagePath.order, logiReq: true },
     { id: 5, name: 'Change Password', screen: 'ChangePassword', icon: ImagePath.lock, logiReq: true },
-    { id: 6, name: 'About Us', screen: 'CmsPage', icon: ImagePath.lock, logiReq: true, params: 'about-us' },
-    { id: 7, name: 'Privacy Policy', screen: 'CmsPage', icon: ImagePath.lock, logiReq: true, params: 'privacy-policy' },
+    { id: 6, name: 'About Us', screen: 'CmsPage', icon: ImagePath.about_us, logiReq: false, params: 'about-us' },
+    { id: 7, name: 'Shipping Info', screen: 'CmsPage', icon: ImagePath.shipping_info, logiReq: false, params: 'shipping-info' },
+    { id: 8, name: 'Privacy Policy', screen: 'CmsPage', icon: ImagePath.privacy_policy, logiReq: false, params: 'privacy-policy' },
+    { id: 9, name: 'Conditions of Use', screen: 'CmsPage', icon: ImagePath.conditionof_use, logiReq: false, params: 'conditions-of-use' },
+    { id: 10, name: 'Refund Policy', screen: 'CmsPage', icon: ImagePath.refund, logiReq: false, params: 'cancellation-refund-policy' },
 
   ]
 
@@ -115,9 +119,28 @@ const CustomDrawerContent = (props) => {
     }
   })
 
+  const onContactPress = useCallback(async (type) => {
+    try {
+      if (type == 'phone') {
+        let phoneUrl = `tel:${SUPORT_PHONE}`
+        await Linking.openURL(phoneUrl)
+      } else if (type == 'whatsapp') {
+        let whatsappUrl = `https://api.whatsapp.com/send?phone=${SUPORT_PHONE}&text=${encodeURIComponent(SUPORT_MESSAGE)}`;
+        await Linking.openURL(whatsappUrl)
+      } else if (type == 'email') {
+        let emailUrl = `mailto:${SUPORT_EMAIL}`
+        await Linking.openURL(emailUrl)
+      }
+    } catch (error) {
+      if (__DEV__) {
+        console.log(error)
+      }
+      Toast.show()
+    }
+  })
+
   return (
-    <DrawerContentScrollView {...props}>
-      {/* <DrawerItemList {...props} /> */}
+    <View style={{ flex: 1 }}>
       {(state.isLogin && state.data) && (
         <View style={styles.drawerTopContent}>
           <Image source={ImagePath.user} style={styles.drawerLogo} />
@@ -125,29 +148,46 @@ const CustomDrawerContent = (props) => {
           <View style={styles.border} />
         </View>
       )}
-      {(state.isLogin ? menuList : menuList.filter(obj => obj.logiReq == false)).map((item, key) => (
+      <DrawerContentScrollView {...props} showsVerticalScrollIndicator={false}>
+        {/* <DrawerItemList {...props} /> */}
+        {(state.isLogin ? menuList : menuList.filter(obj => obj.logiReq == false)).map((item, key) => (
+          <DrawerItem
+            key={key}
+            label={item.name}
+            onPress={() => onMenuPress(item)}
+            labelStyle={styles.menuText}
+            icon={(props) => (<Icon source={item.icon} props={props} />)}
+            activeTintColor={Colors.light_blue}
+            inactiveTintColor={Colors.border_grey}
+            focused={props.state.routeNames[props.state.index] === item.screen}
+            pressColor={Colors.light_blue}
+            style={{ marginVertical: 0 }}
+          />
+        ))}
         <DrawerItem
-          key={key}
-          label={item.name}
-          onPress={() => onMenuPress(item)}
+          label={state.isLogin ? "Sign Out" : "Login"}
+          onPress={state.isLogin ? onSignOut : onLogin}
           labelStyle={styles.menuText}
-          icon={(props) => (<Icon source={item.icon} props={props} />)}
+          icon={(props) => (<Icon source={state.isLogin ? ImagePath.logout : ImagePath.user_new} props={props} />)}
           activeTintColor={Colors.light_blue}
           inactiveTintColor={Colors.border_grey}
-          focused={props.state.routeNames[props.state.index] === item.screen}
           pressColor={Colors.light_blue}
+          style={{ marginVertical: 0 }}
         />
-      ))}
-      <DrawerItem
-        label={state.isLogin ? "Sign Out" : "Login"}
-        onPress={state.isLogin ? onSignOut : onLogin}
-        labelStyle={styles.menuText}
-        icon={(props) => (<Icon source={state.isLogin ? ImagePath.logout : ImagePath.user_new} props={props} />)}
-        activeTintColor={Colors.light_blue}
-        inactiveTintColor={Colors.border_grey}
-        pressColor={Colors.light_blue}
-      />
-    </DrawerContentScrollView>
+      </DrawerContentScrollView>
+      <View style={styles.contactContainer}>
+        <Text style={styles.menuText}>Contact Us :</Text>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => onContactPress('phone')}>
+          <Image source={ImagePath.call} style={styles.contactlogo} />
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => onContactPress('whatsapp')}>
+          <Image source={ImagePath.whatsapp} style={styles.contactlogo} />
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => onContactPress('email')}>
+          <Image source={ImagePath.email} style={styles.contactlogo} />
+        </TouchableOpacity>
+      </View>
+    </View>
   )
 }
 

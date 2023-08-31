@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ActivityIndicator, FlatList } from 'react-native'
+import { View, Text, SafeAreaView, ActivityIndicator, FlatList, Image } from 'react-native'
 import React, { useCallback, useContext, useState, useEffect } from 'react'
 import { styles } from './styles'
 import Header from '../../Container/Header'
@@ -19,14 +19,14 @@ const DashBoard = ({ navigation }) => {
 
     // useFocusEffect(
     //     useCallback(() => {
-    //         const unsubscribe = onGetdata();
+    //         const unsubscribe = onGetdata(1);
     //         return () => unsubscribe
     //     }, [navigation])
     // )
 
     useEffect(() => {
-        onGetdata();
-    }, [state.page])
+        onGetdata(1);
+    }, [])
 
     // useEffect(() => {
     //     const unsubscribe = onGetdata();
@@ -41,7 +41,7 @@ const DashBoard = ({ navigation }) => {
         navigation.navigate('Search')
     })
 
-    const onGetdata = useCallback(async (page = state.page) => {
+    const onGetdata = useCallback(async (page) => {
         try {
             setState(prevState => ({
                 ...prevState,
@@ -49,20 +49,27 @@ const DashBoard = ({ navigation }) => {
             }))
             let params = {
                 per_page: 20,
-                page: page,
-                hide_empty: true
+                page: page ? page : state.page + 1,
+                hide_empty: true,
+                orderby:'term_group'
             }
-            // console.log('params', params)
+            console.log('params', params)
             const response = await Apis.categoryList(params)
             // if (__DEV__) {
             //     console.log('CategoryLists', JSON.stringify(response))
             // }
-            if (response) {
+            if (response && response.length > 0) {
                 setState(prevState => ({
                     ...prevState,
                     categoryList: [...state.categoryList, ...response],
                     // categoryList:response,
+                    page: page ? page : state.page + 1,
                     loading: false,
+                }))
+            } else {
+                setState(prevState => ({
+                    ...prevState,
+                    loading: false
                 }))
             }
         } catch (error) {
@@ -77,14 +84,19 @@ const DashBoard = ({ navigation }) => {
     })
 
     const onPagenation = useCallback(async () => {
-        // onGetdata(state.page + 1)
-        setState(prevState => ({
-            ...prevState,
-            page: state.page + 1,
-            // loading: true
-        }))
+        onGetdata()
+        // setState(prevState => ({
+        //     ...prevState,
+        //     page: state.page + 1,
+        //     // loading: true
+        // }))
     })
 
+    const renderHeader = () => (
+        <View>
+            <Image source={ImagePath.banner} style={styles.banner} />
+        </View>
+    )
     const renderFooter = () => {
         if (!state.loading) return null;
 
@@ -94,7 +106,7 @@ const DashBoard = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Header leftIcon={ImagePath.menu} leftonPress={onMenuPress} />
-            <SearchField onPress={onSearchPress} />
+            {/* <SearchField onPress={onSearchPress} /> */}
             {(state.categoryList && state.categoryList.length > 0) && (
                 <View style={{ flex: 1 }}>
                     <FlatList
@@ -107,6 +119,7 @@ const DashBoard = ({ navigation }) => {
                         contentContainerStyle={styles.flatlistcontent}
                         onEndReached={onPagenation}
                         onEndReachedThreshold={0.5}
+                        ListHeaderComponent={renderHeader}
                         ListFooterComponent={renderFooter}
                         showsVerticalScrollIndicator={false}
                     />

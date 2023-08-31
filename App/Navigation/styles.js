@@ -4,20 +4,20 @@ import { Colors } from '../Utils/Colors';
 
 export const styles = StyleSheet.create({
     drawerTopContent: {
-        marginVertical: '10%',
+        marginVertical: '5%',
         alignItems: 'center',
     },
     drawerLogo: {
         width: 80,
         height: 80,
         resizeMode: 'contain',
-        tintColor:Colors.light_blue
+        tintColor: Colors.light_blue
     },
     drawerNametext: {
         // fontFamily: Font_Family.NunitoSans_Bold,
         marginVertical: '5%',
         fontSize: 16,
-        fontWeight:'bold',
+        fontWeight: 'bold',
         color: Colors.black
     },
     border: {
@@ -29,6 +29,21 @@ export const styles = StyleSheet.create({
     menuText: {
         // fontFamily: Font_Family.NunitoSans_Bold,
         // fontSize:16
-        fontWeight:'bold'
+        fontWeight: 'bold'
+    },
+    contactContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '95%',
+        borderTopWidth: 1.5,
+        borderTopColor: Colors.light_blue,
+        alignSelf: 'center',
+        paddingHorizontal: '4%',
+        paddingVertical: '4%'
+    },
+    contactlogo: {
+        width: 25,
+        height: 25
     }
 })

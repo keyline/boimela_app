@@ -19,6 +19,16 @@ export const ImagePath = {
     order: require('../assets/Images/order.png'),
     address: require('../assets/Images/address.png'),
     home: require('../assets/Images/home.png'),
-    right_arrow2:require('../assets/Images/right_arrow2.png'),
-    login:require('../assets/Images/login.png')
+    right_arrow2: require('../assets/Images/right_arrow2.png'),
+    login: require('../assets/Images/login.png'),
+    refund: require('../assets/Images/refund.png'),
+    conditionof_use: require('../assets/Images/conditionof_use.png'),
+    privacy_policy: require('../assets/Images/privacy_policy.png'),
+    shipping_info: require('../assets/Images/shipping_info.png'),
+    about_us: require('../assets/Images/about_us.png'),
+    whatsapp:require('../assets/Images/whatsapp.png'),
+    call:require('../assets/Images/call.png'),
+    email:require('../assets/Images/email.png'),
+    banner:require('../assets/Images/banner.jpg')
+
 }

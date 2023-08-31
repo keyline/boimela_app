@@ -13,11 +13,11 @@ export const Network = async (method, endpoint, params = {}, base_url = API_URL,
                     password: CONSUMER_SECRET,
                 },
             });
-            if (__DEV__) {
-                console.log('Api_Urll', base_url)
-                console.log('EndPoint ', endpoint);
-                console.log('params ', JSON.stringify(params));
-            }
+            // if (__DEV__) {
+            //     console.log('Api_Urll', base_url)
+            //     console.log('EndPoint ', endpoint);
+            //     console.log('params ', JSON.stringify(params));
+            // }
             const response = await api({
                 method: method,
                 url: endpoint,

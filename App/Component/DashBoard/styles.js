@@ -10,6 +10,11 @@ export const styles = StyleSheet.create({
     loader: {
         marginVertical: 20,
     },
+    banner: {
+        width: '100%',
+        height: 150,
+        resizeMode: 'cover'
+    },
     categoryContainer: {
         backgroundColor: Colors.white,
         marginBottom: '2%',
@@ -39,7 +44,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom:'2%'
+        marginBottom: '2%'
     },
     viewContent: {
         flexDirection: 'row',
@@ -49,17 +54,17 @@ export const styles = StyleSheet.create({
         width: 12,
         height: 12,
         resizeMode: 'contain',
-        tintColor:Colors.grey
+        tintColor: Colors.grey
     },
     categryText: {
         fontWeight: 'bold',
         fontSize: 18,
-        color:Colors.light_blue
+        color: Colors.light_blue
     },
     viewText: {
         fontWeight: 'bold',
         fontSize: 14,
-        color:Colors.grey
+        color: Colors.grey
     },
     listContainer: {
         width: 130,
@@ -114,7 +119,7 @@ export const styles = StyleSheet.create({
         width: '90%',
         textAlign: 'center',
         marginVertical: '0.5%',
-        fontSize:12
+        fontSize: 12
         // color: Colors.lightGrey
     },
     offContainer: {
