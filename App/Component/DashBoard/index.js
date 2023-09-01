@@ -51,7 +51,7 @@ const DashBoard = ({ navigation }) => {
                 per_page: 20,
                 page: page ? page : state.page + 1,
                 hide_empty: true,
-                orderby:'term_group'
+                orderby: 'term_group'
             }
             console.log('params', params)
             const response = await Apis.categoryList(params)
@@ -84,7 +84,9 @@ const DashBoard = ({ navigation }) => {
     })
 
     const onPagenation = useCallback(async () => {
-        onGetdata()
+        if (!state.loading) {
+            onGetdata()
+        }
         // setState(prevState => ({
         //     ...prevState,
         //     page: state.page + 1,

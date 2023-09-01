@@ -10,7 +10,7 @@ const SingleBotton = ({ name, onPress, loading, width, disabled }) => {
                     <ActivityIndicator color={Colors.white} animating={loading} size={'small'} />
                 </View>
                 :
-                <TouchableOpacity disabled={disabled ? disabled : false} onPress={() => onPress()} activeOpacity={0.5} style={[styles.container, { width: width ? width : '100%', opacity: disabled ? 0.7 : '' }]}>
+                <TouchableOpacity disabled={disabled ? disabled : (onPress ? false : true)} onPress={() => onPress()} activeOpacity={0.5} style={[styles.container, { width: width ? width : '100%', opacity: disabled ? 0.7 : '' }]}>
                     <Text style={styles.text}>{name}</Text>
                 </TouchableOpacity>
             }

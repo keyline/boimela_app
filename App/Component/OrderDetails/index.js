@@ -143,6 +143,7 @@ const OrderDetails = ({ navigation, route }) => {
                                 <View style={styles.border} />
                                 <ListHeading name={'Subtotal :'} value={state.data?.currency_symbol + " " + (state.data?.total - state.data?.shipping_total)} valueColor={Colors.bold_text} />
                                 <ListHeading name={'Shipping :'} value={state.data?.currency_symbol + " " + state.data?.shipping_total} valueColor={Colors.bold_text} />
+                                <ListHeading name={'Discount :'} value={'- '+state.data?.currency_symbol + " " + state.data?.discount_total} valueColor={Colors.bold_text} />
                                 <ListHeading name={'Total :'} value={state.data?.currency_symbol + " " + state.data?.total} valueColor={Colors.bold_text} />
                                 <ListHeading name={'Payment method :'} value={state.data?.payment_method_title} />
                                 <View style={styles.border} />

@@ -54,11 +54,13 @@ export const styles = StyleSheet.create({
     headingtxt: {
         color: Colors.grey,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize:12
     },
     valutxt: {
         color: Colors.black,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize:12
     },
     delicon: {
         width: 20,
@@ -83,7 +85,7 @@ export const styles = StyleSheet.create({
     },
     btm: {
         backgroundColor: Colors.light_blue,
-        width: '30%',
+        width: '25%',
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center'
@@ -96,7 +98,7 @@ export const styles = StyleSheet.create({
     btmPrice: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: '70%',
+        width: '75%',
         justifyContent: 'space-between',
         paddingHorizontal: '4%'
     },

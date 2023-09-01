@@ -22,6 +22,14 @@ export default class Apis {
         return network_new('POST', `wc/store/cart/remove-item`, params)
     }
 
+    static ApplyCoupon = (params) => {
+        return network_new('POST', `wc/store/cart/apply-coupon`, params)
+    }
+
+    static RemoveCoupon = (params) => {
+        return network_new('POST', `wc/store/cart/remove-coupon`, params)
+    }
+
     static CheckOut_Get = () => {
         return network_new('GET', `wc/store/checkout`)
     }
@@ -92,5 +100,9 @@ export default class Apis {
 
     static cmsPage = (params) => {
         return network_cms('GET', `wp/v2/pages`, params)
+    }
+
+    static paymentMethodList = (params) => {
+        return Network('GET', `payment_gateways`, params)
     }
 }

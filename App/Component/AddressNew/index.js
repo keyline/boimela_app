@@ -514,6 +514,9 @@ const AddressNew = ({ navigation, route }) => {
                     ...prev,
                     btnloading: false
                 }))
+                if (route.params?.data && route.params?.data == 'OrderReview') {
+                    navigation.goBack();
+                }
                 Toast.show('Address Updated Successfully', Toast.LONG)
             } catch (error) {
                 if (__DEV__) {

@@ -48,7 +48,7 @@ const Cart = ({ navigation }) => {
             }))
             const response = await Apis.CartList();
             if (__DEV__) {
-                console.log('CartListItem', JSON.stringify(response.data?.items?.length))
+                console.log('CartListItem', JSON.stringify(response.data))
                 console.log('Price', response?.data?.totals?.total_items)
             }
             setState(prev => ({
@@ -107,7 +107,7 @@ const Cart = ({ navigation }) => {
     )
 
     const onNext = useCallback(async () => {
-        navigation.navigate('Address');
+        navigation.navigate('OrderReview');
     })
 
     const onMenuPress = useCallback(async () => {
@@ -131,11 +131,16 @@ const Cart = ({ navigation }) => {
                 <View style={styles.btmContent}>
                     <View style={styles.btmPrice}>
                         <ValueText name={'Subtotal'} value={'₹' + state?.data?.totals?.total_items} />
-                        <ValueText name={'Shipping'} value={'₹' + state?.data?.totals?.total_shipping} />
+                        {state?.data?.totals?.total_shipping && (
+                            <ValueText name={'Shipping'} value={'₹' + state?.data?.totals?.total_shipping} />
+                        )}
+                        {(state.data.coupons && state.data.coupons.length > 0) && (
+                            <ValueText name={'Coupon'} value={'- ₹' + state?.data?.coupons[0]?.totals?.total_discount} />
+                        )}
                         <ValueText name={'Total'} value={'₹' + state?.data?.totals?.total_price} />
                     </View>
                     {/* <Text style={styles.totalPricetxt}>Total Price : <Text style={styles.boldtext}>₹ {state?.data?.totals?.total_price}</Text></Text> */}
-                    <TouchableOpacity onPress={onNext} activeOpacity={0.5} style={styles.btm}>
+                    <TouchableOpacity disabled={state.data?.items.length > 0 ? false : true} onPress={onNext} activeOpacity={0.5} style={[styles.btm, { opacity: state.data?.items.length > 0 ? null : 0.7 }]}>
                         <Text style={styles.btmText}>Proceed</Text>
                     </TouchableOpacity>
                 </View>

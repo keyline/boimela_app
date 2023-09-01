@@ -103,7 +103,7 @@ const Address = ({ navigation }) => {
                 payment_method: "payumbolt",
                 payment_data: [],
             }
-            console.log('CheckountParams', JSON.stringify(params))
+            // console.log('CheckountParams', JSON.stringify(params))
             const response = await Apis.CheckOut_Post(params)
             if (__DEV__) {
                 console.log('CheckOutPost', JSON.stringify(response.data))
