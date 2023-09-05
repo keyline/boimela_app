@@ -24,6 +24,8 @@ const CustomDrawerContent = (props) => {
     { id: 8, name: 'Privacy Policy', screen: 'CmsPage', icon: ImagePath.privacy_policy, logiReq: false, params: 'privacy-policy' },
     { id: 9, name: 'Conditions of Use', screen: 'CmsPage', icon: ImagePath.conditionof_use, logiReq: false, params: 'conditions-of-use' },
     { id: 10, name: 'Refund Policy', screen: 'CmsPage', icon: ImagePath.refund, logiReq: false, params: 'cancellation-refund-policy' },
+    { id: 11, name: 'Delete Account', screen: 'DeleteAccount', icon: ImagePath.delete_account, logiReq: true, params: 'delete_account' },
+    { id: 11, name: 'Track Order', screen: 'TrackOrder', icon: ImagePath.delete_account, logiReq: false },
 
   ]
 
@@ -113,6 +115,8 @@ const CustomDrawerContent = (props) => {
     if (item && item.screen) {
       if (item.screen == 'CmsPage') {
         props.navigation.navigate(item.screen, { page: item.params });
+      } else if (item.screen == 'DeleteAccount') {
+        onDeleteAccount();
       } else {
         props.navigation.navigate(item.screen);
       }
@@ -135,7 +139,30 @@ const CustomDrawerContent = (props) => {
       if (__DEV__) {
         console.log(error)
       }
-      Toast.show()
+      Toast.show('Something went Wrong')
+    }
+  })
+
+  const onDeleteAccount = useCallback(async () => {
+    if (state.data?.id) {
+      try {
+        const delres = await Apis.DeleteUser(state.data?.id)
+        if (__DEV__) {
+          console.log('DeleteRes', JSON.stringify(delres))
+        }
+        if (delres) {
+          await context.onClearStoreData();
+          props.navigation.navigate('DashBoard');
+          Toast.show('Account Deleted Successfully', Toast.LONG)
+        }
+      } catch (error) {
+        if (__DEV__) {
+          console.log(error)
+        }
+        Toast.show('Something went Wrong');
+      }
+    } else {
+      Toast.show('Something went Wrong');
     }
   })
 
@@ -143,7 +170,7 @@ const CustomDrawerContent = (props) => {
     <View style={{ flex: 1 }}>
       {(state.isLogin && state.data) && (
         <View style={styles.drawerTopContent}>
-          <Image source={ImagePath.user} style={styles.drawerLogo} />
+          <Image source={state.data?.avatar_url ? { uri: state?.data?.avatar_url } : ImagePath.user} style={styles.drawerLogo} />
           <Text style={styles.drawerNametext}>{state?.data?.first_name + " " + state?.data?.last_name}</Text>
           <View style={styles.border} />
         </View>

@@ -48,7 +48,7 @@ const Login = () => {
   }, [state.passwordVisible])
 
   const onSignUp = useCallback(async () => {
-    console.log('SignUp')
+    navigation.navigate('SignUp')
   })
 
   const onLogin = useCallback(async () => {

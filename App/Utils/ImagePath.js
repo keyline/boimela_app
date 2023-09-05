@@ -29,6 +29,7 @@ export const ImagePath = {
     whatsapp:require('../assets/Images/whatsapp.png'),
     call:require('../assets/Images/call.png'),
     email:require('../assets/Images/email.png'),
-    banner:require('../assets/Images/banner.jpg')
+    banner:require('../assets/Images/banner.jpg'),
+    delete_account:require('../assets/Images/delete_account.png')
 
 }

@@ -95,7 +95,7 @@ const DashBoard = ({ navigation }) => {
     })
 
     const renderHeader = () => (
-        <View>
+        <View style={{ width: '97%', alignSelf: 'center' }}>
             <Image source={ImagePath.banner} style={styles.banner} />
         </View>
     )

@@ -10,8 +10,9 @@ export const styles = StyleSheet.create({
     drawerLogo: {
         width: 80,
         height: 80,
+        borderRadius: 40,
         resizeMode: 'contain',
-        tintColor: Colors.light_blue
+        // tintColor: Colors.light_blue
     },
     drawerNametext: {
         // fontFamily: Font_Family.NunitoSans_Bold,

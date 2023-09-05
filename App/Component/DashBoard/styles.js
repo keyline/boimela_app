@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
     },
     banner: {
         width: '100%',
-        height: 160,
-        // resizeMode: 'contain'
+        height: 150,
+        resizeMode: 'contain'
     },
     categoryContainer: {
         backgroundColor: Colors.white,

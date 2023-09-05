@@ -252,13 +252,26 @@ const OrderReview = ({ navigation, route }) => {
                     <View style={styles.bodyContent}>
                         <Text style={styles.headingtext}>Order Review</Text>
                         <View style={styles.content}>
-                            <View style={[styles.flex, { marginBottom: '1%' }]}>
-                                <Text style={styles.boldtxt}>Shipping Address :</Text>
-                                <Text onPress={onEditAddress} style={styles.edittxt}>Edit</Text>
-                            </View>
-                            <Text>{getAddresFormat(state.data?.shipping_address)}</Text>
-                            <Text style={[styles.boldtxt, { marginTop: '2%', marginBottom: '1%' }]}>Billing Address :</Text>
-                            <Text>{getAddresFormat(state.data?.billing_address)}</Text>
+                            {(state.data?.shipping_address.address_1 || state.data?.billing_address.address_1) ?
+                                <>
+                                    <View style={[styles.flex, { marginBottom: '1%' }]}>
+                                        <Text style={styles.boldtxt}>Shipping Address :</Text>
+                                        <Text onPress={onEditAddress} style={styles.edittxt}>Edit</Text>
+                                    </View>
+                                    <Text>{getAddresFormat(state.data?.shipping_address)}</Text>
+                                    <Text style={[styles.boldtxt, { marginTop: '2%', marginBottom: '1%' }]}>Billing Address :</Text>
+                                    <Text>{getAddresFormat(state.data?.billing_address)}</Text>
+                                </>
+                                :
+                                <View style={{ alignItems: 'center' }}>
+                                    {/* <Text style={[styles.boldtxt, { marginTop: '2%', marginBottom: '1%' }]}>No Address Found</Text> */}
+                                    <SmallBotton
+                                        name={'Add Address'}
+                                        width={'60%'}
+                                        onPress={onEditAddress}
+                                    />
+                                </View>
+                            }
                             <View style={[styles.border, { marginVertical: '3%' }]} />
                             {(state.data?.items && state.data?.items.length > 0) && (
                                 <>
@@ -315,6 +328,7 @@ const OrderReview = ({ navigation, route }) => {
                                     name={'Place Order'}
                                     width={'80%'}
                                     onPress={onSubmit}
+                                    disabled={(state.data?.shipping_address.address_1 || state.data?.billing_address.address_1) ? false : true}
                                 />
                             </View>
                         </View>

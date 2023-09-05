@@ -47,7 +47,18 @@ export default class Apis {
     // }
 
     static userList = () => {
-        return Network('GET', 'wc/v3/customers')
+        return Network('GET', 'customers')
+    }
+
+    static SignUp = (params) => {
+        return Network('POST', 'customers', params)
+    }
+
+    static DeleteUser = (id) => {
+        let params = {
+            force: true
+        }
+        return Network('DELETE', `customers/${id}`, params)
     }
 
     // static userDetails = (id) => {
