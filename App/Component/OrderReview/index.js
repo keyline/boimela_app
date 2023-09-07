@@ -76,9 +76,11 @@ const OrderReview = ({ navigation, route }) => {
                 loading: true
             }))
             const response = await Apis.CartList();
-            // if (__DEV__) {
-            //     console.log('OrderreviewList', JSON.stringify(response.data))
-            // }
+            if (__DEV__) {
+                //     console.log('OrderreviewList', JSON.stringify(response.data))
+                const cookie = response.headers['set-cookie']
+                console.log('Cookie', cookie)
+            }
             setState(prev => ({
                 ...prev,
                 data: response?.data,
@@ -215,6 +217,8 @@ const OrderReview = ({ navigation, route }) => {
                     console.log('CheckOutPost', JSON.stringify(response.data))
                 }
                 if (response?.data?.payment_result?.redirect_url) {
+                    // console.log('paymenturl', response?.data?.payment_result?.redirect_url)
+                    // return
                     navigation.replace('Payment', { url: response?.data?.payment_result?.redirect_url })
                 }
                 setState(prevState => ({

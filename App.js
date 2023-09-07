@@ -5,6 +5,7 @@ import { encode, decode } from 'base-64';
 import AuthContext from './App/Service/Context';
 import { clearAllData, getAccessToken, getUserData } from './App/Service/AsyncStorage';
 import DrawerStack from './App/Navigation/DrawerStack';
+import SplashScreen from 'react-native-splash-screen';
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -23,7 +24,20 @@ const App = () => {
 
   useEffect(() => {
     onGetStoreData();
+    splashHide();
   }, [])
+
+  const splashHide = () => {
+    try {
+      setTimeout(() => {
+        SplashScreen.hide();
+      }, 3000);
+    } catch (error) {
+      if (__DEV__) {
+        console.log('SplashError', error);
+      }
+    }
+  }
 
   const onGetStoreData = async () => {
     let userdata = await getUserData();
@@ -80,7 +94,7 @@ const App = () => {
     <AuthContext.Provider value={{ onGetStoreData, onClearStoreData, allData: state, setState }}>
       <NavigationContainer>
         {/* <MainStack /> */}
-        <DrawerStack/>
+        <DrawerStack />
       </NavigationContainer>
     </AuthContext.Provider>
   )

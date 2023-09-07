@@ -1,13 +1,11 @@
 import { View, Text, SafeAreaView } from 'react-native'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { styles } from './styles'
 import WebView from 'react-native-webview';
 import Header from '../../Container/Header';
 import { ImagePath } from '../../Utils/ImagePath';
 
 const TrackOrder = ({ navigation }) => {
-
-    const [contentWidth, setContentWidth] = useState(0);
 
     const htmlContent = `
     <html>

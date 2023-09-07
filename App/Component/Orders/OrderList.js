@@ -38,9 +38,9 @@ const OrderList = ({ item, onCancel, onPay }) => {
                 {(item?.status == 'pending' || item?.status == 'processing' || item?.status == 'on-hold') && (
                     <SmallBotton name={'Cancel'} onPress={() => onCancel(item)} />
                 )}
-                {(item?.status == 'pending') && (
+                {/* {(item?.status == 'pending') && (
                     <SmallBotton name={'Pay'} onPress={() => onPay(item)} />
-                )}
+                )} */}
                 <SmallBotton name={'View'} onPress={onView} />
                 {/* <SmallBotton name={'Invoice'} /> */}
             </View>

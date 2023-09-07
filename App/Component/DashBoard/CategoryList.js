@@ -5,6 +5,7 @@ import { ImagePath } from '../../Utils/ImagePath'
 import Apis from '../../Service/apis'
 import ProductList from './ProductList'
 import { useNavigation } from '@react-navigation/native'
+import ListHorizontal from '../../Container/ListHorizontal'
 
 const CategoryList = ({ item }) => {
 
@@ -71,7 +72,8 @@ const CategoryList = ({ item }) => {
                         data={state.data}
                         keyExtractor={(items, index) => items.id}
                         renderItem={({ item }) =>
-                            <ProductList item={item} />
+                            // <ProductList item={item} />
+                            <ListHorizontal item={item} />
                         }
                         horizontal
                         initialNumToRender={4}
@@ -83,4 +85,4 @@ const CategoryList = ({ item }) => {
     )
 }
 
-export default CategoryList
+export default memo(CategoryList)

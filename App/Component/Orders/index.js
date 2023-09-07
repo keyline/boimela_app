@@ -54,9 +54,9 @@ const Orders = ({ navigation, route }) => {
                 page: page
             }
             const response = await Apis.orderList(params);
-            // if (__DEV__) {
-            //     console.log('OrderList', JSON.stringify(response))
-            // }
+            if (__DEV__) {
+                console.log('OrderList', JSON.stringify(response))
+            }
             if (response) {
                 if (page == 1) {
                     setState(prev => ({

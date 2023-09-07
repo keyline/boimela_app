@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React, { useCallback } from 'react'
+import React, { memo, useCallback } from 'react'
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/native'
 import { ImagePath } from '../../Utils/ImagePath'
@@ -43,4 +43,4 @@ const List = ({ item, onAddCart }) => {
     )
 }
 
-export default List
+export default memo(List)
