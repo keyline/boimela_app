@@ -57,7 +57,8 @@ export const styles = StyleSheet.create({
     },
     btmtxt: {
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
+        color:Colors.grey
     },
     signtxt: {
         color: Colors.light_blue,

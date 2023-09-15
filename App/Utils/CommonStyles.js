@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from "react-native";
+import { Colors } from "./Colors";
 
 export const CommonStyles = StyleSheet.create({
     box_Container: {
@@ -20,3 +21,16 @@ export const CommonStyles = StyleSheet.create({
         }),
     }
 })
+
+export const tagsStyles = {
+    b: { color: Colors.black },
+    h1: { color: Colors.black },
+    h2: { color: Colors.black },
+    h3: { color: Colors.black },
+    h5: { color: Colors.black },
+    h4: { color: Colors.black },
+    h6: { color: Colors.black },
+    p: { color: Colors.grey },
+    li: { color: Colors.grey },
+    span:{color: Colors.grey}
+}

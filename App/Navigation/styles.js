@@ -30,7 +30,8 @@ export const styles = StyleSheet.create({
     menuText: {
         // fontFamily: Font_Family.NunitoSans_Bold,
         // fontSize:16
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color:Colors.grey
     },
     contactContainer: {
         flexDirection: 'row',

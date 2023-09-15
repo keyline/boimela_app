@@ -26,10 +26,11 @@ export const ImagePath = {
     privacy_policy: require('../assets/Images/privacy_policy.png'),
     shipping_info: require('../assets/Images/shipping_info.png'),
     about_us: require('../assets/Images/about_us.png'),
-    whatsapp:require('../assets/Images/whatsapp.png'),
-    call:require('../assets/Images/call.png'),
-    email:require('../assets/Images/email.png'),
-    banner:require('../assets/Images/banner.jpg'),
-    delete_account:require('../assets/Images/delete_account.png')
-
+    whatsapp: require('../assets/Images/whatsapp.png'),
+    call: require('../assets/Images/call.png'),
+    email: require('../assets/Images/email.png'),
+    banner: require('../assets/Images/banner.jpg'),
+    delete_account: require('../assets/Images/delete_account.png'),
+    track_order: require('../assets/Images/track_order.png'),
+    share_new:require('../assets/Images/share_new.png')
 }

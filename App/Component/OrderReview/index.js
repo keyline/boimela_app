@@ -262,9 +262,9 @@ const OrderReview = ({ navigation, route }) => {
                                         <Text style={styles.boldtxt}>Shipping Address :</Text>
                                         <Text onPress={onEditAddress} style={styles.edittxt}>Edit</Text>
                                     </View>
-                                    <Text>{getAddresFormat(state.data?.shipping_address)}</Text>
+                                    <Text style={{ color: Colors.grey }}>{getAddresFormat(state.data?.shipping_address)}</Text>
                                     <Text style={[styles.boldtxt, { marginTop: '2%', marginBottom: '1%' }]}>Billing Address :</Text>
-                                    <Text>{getAddresFormat(state.data?.billing_address)}</Text>
+                                    <Text style={{ color: Colors.grey }}>{getAddresFormat(state.data?.billing_address)}</Text>
                                 </>
                                 :
                                 <View style={{ alignItems: 'center' }}>
@@ -301,6 +301,7 @@ const OrderReview = ({ navigation, route }) => {
                                     onChangeText={e => onSetCoupon(e)}
                                     placeholder='Enter Coupon Code'
                                     value={state.couponsCode}
+                                    placeholderTextColor={Colors.grey}
                                     editable={state.data?.coupons.length > 0 ? false : true}
                                     style={{ color: Colors.black }}
                                 />
@@ -318,6 +319,8 @@ const OrderReview = ({ navigation, route }) => {
                                 containerStyle={{
                                     alignItems: 'flex-start',
                                 }}
+                                activeColor={Colors.light_blue}
+                                inactiveColor="gray"
                             />
                             <View style={[styles.border, { marginVertical: '4%' }]} />
                             <InputField

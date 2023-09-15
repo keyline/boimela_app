@@ -132,7 +132,7 @@ const OrderDetails = ({ navigation, route }) => {
                     <ScrollView showsVerticalScrollIndicator={false}>
                         <View style={styles.content}>
                             <Text style={styles.nametxt}>Order Info :</Text>
-                            <Text>Order <Text style={styles.bold}> #{state.data?.id} </Text> was placed on <Text style={styles.bold}> {dateFormat(state.data?.date_created)} </Text> and is currently <Text style={styles.bold}> {capitalizeFirstLetter(state.data?.status)} </Text>.</Text>
+                            <Text style={{color:Colors.grey}}>Order <Text style={styles.bold}> #{state.data?.id} </Text> was placed on <Text style={styles.bold}> {dateFormat(state.data?.date_created)} </Text> and is currently <Text style={styles.bold}> {capitalizeFirstLetter(state.data?.status)} </Text>.</Text>
                             <Text style={styles.nametxt}>Order Details :</Text>
                             <View style={styles.detailsContent}>
                                 <ListHeading name={'Product'} qty={'Qty'} value={'Total'} />

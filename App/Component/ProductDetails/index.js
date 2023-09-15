@@ -12,6 +12,8 @@ import Toast from 'react-native-simple-toast'
 import { offerPercentage } from '../../Utils/CommonFunction'
 import ListHorizontal from '../../Container/ListHorizontal'
 import AuthContext from '../../Service/Context'
+import { Colors } from '../../Utils/Colors'
+import { tagsStyles } from '../../Utils/CommonStyles'
 
 const ProductDetails = ({ navigation, route }) => {
 
@@ -52,7 +54,7 @@ const ProductDetails = ({ navigation, route }) => {
                     loading: false,
                 }))
                 onGetRelatedProduct(response?.related_ids)
-                onGetReview(response?.id)
+                // onGetReview(response?.id)
             } else {
                 setState(prevState => ({
                     ...prevState,
@@ -120,7 +122,7 @@ const ProductDetails = ({ navigation, route }) => {
     })
 
     const onPressAttributes = useCallback(async (value) => {
-        navigation.navigate('Search', { searchkey: value })
+        // navigation.navigate('Search', { searchkey: value })
     })
 
     const handleShare = async () => {
@@ -245,6 +247,7 @@ const ProductDetails = ({ navigation, route }) => {
                                 <RenderHTML
                                     contentWidth={100}
                                     source={{ html: state.data?.description }}
+                                    tagsStyles={tagsStyles}
                                 />
                             </View>
                         )}

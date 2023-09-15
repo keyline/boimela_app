@@ -14,6 +14,7 @@ const InputField = ({ name, value, keyboardType,multiline, onChangeText, placeho
                     value={value}
                     onChangeText={e => onChangeText(e)}
                     placeholder={placeholder}
+                    placeholderTextColor={Colors.grey}
                     style={styles.input}
                     secureTextEntry={passVisible ? passVisible : false}
                     multiline={multiline ? multiline : false}

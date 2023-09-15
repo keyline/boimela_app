@@ -8,6 +8,8 @@ import Header from '../../Container/Header';
 import { ImagePath } from '../../Utils/ImagePath';
 import Loader from '../../Container/Loader';
 import RenderHTML from 'react-native-render-html';
+import { Colors } from '../../Utils/Colors';
+import { tagsStyles } from '../../Utils/CommonStyles';
 
 const CmsPage = ({ navigation, route }) => {
 
@@ -71,14 +73,15 @@ const CmsPage = ({ navigation, route }) => {
             {(state.data && !state.loading) && (
                 <View style={styles.bodyContent}>
                     <Text style={styles.headingtext}>{state.data?.title?.rendered}</Text>
-                        <View style={styles.content}>
-                    <ScrollView showsVerticalScrollIndicator={false}>
+                    <View style={styles.content}>
+                        <ScrollView showsVerticalScrollIndicator={false}>
                             <RenderHTML
                                 contentWidth={100}
                                 source={{ html: state.data?.content?.rendered }}
+                                tagsStyles={tagsStyles}
                             />
-                    </ScrollView>
-                        </View>
+                        </ScrollView>
+                    </View>
                 </View>
             )}
             {state.loading && (

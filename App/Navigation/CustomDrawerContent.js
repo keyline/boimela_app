@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, Linking } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Linking, Share } from 'react-native'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
 import { Colors } from '../Utils/Colors'
@@ -9,7 +9,7 @@ import AuthContext from '../Service/Context'
 import { getUserId } from '../Service/AsyncStorage'
 import Apis from '../Service/apis'
 import { useFocusEffect } from '@react-navigation/native'
-import { SUPORT_EMAIL, SUPORT_MESSAGE, SUPORT_PHONE } from '../Service/Constant'
+import { APP_LINK, SUPORT_EMAIL, SUPORT_MESSAGE, SUPORT_PHONE } from '../Service/Constant'
 
 const CustomDrawerContent = (props) => {
 
@@ -20,12 +20,13 @@ const CustomDrawerContent = (props) => {
     { id: 4, name: 'Orders', screen: 'Orders', icon: ImagePath.order, logiReq: true },
     { id: 5, name: 'Change Password', screen: 'ChangePassword', icon: ImagePath.lock, logiReq: true },
     { id: 6, name: 'About Us', screen: 'CmsPage', icon: ImagePath.about_us, logiReq: false, params: 'about-us' },
-    { id: 7, name: 'Shipping Info', screen: 'CmsPage', icon: ImagePath.shipping_info, logiReq: false, params: 'shipping-info' },
+    { id: 7, name: 'Shipping Info', screen: 'CmsPage', icon: ImagePath.shipping_info, logiReq: true, params: 'shipping-info' },
     { id: 8, name: 'Privacy Policy', screen: 'CmsPage', icon: ImagePath.privacy_policy, logiReq: false, params: 'privacy-policy' },
     { id: 9, name: 'Conditions of Use', screen: 'CmsPage', icon: ImagePath.conditionof_use, logiReq: false, params: 'conditions-of-use' },
     { id: 10, name: 'Refund Policy', screen: 'CmsPage', icon: ImagePath.refund, logiReq: false, params: 'cancellation-refund-policy' },
     { id: 11, name: 'Delete Account', screen: 'DeleteAccount', icon: ImagePath.delete_account, logiReq: true, params: 'delete_account' },
-    { id: 11, name: 'Track Order', screen: 'TrackOrder', icon: ImagePath.delete_account, logiReq: false },
+    { id: 12, name: 'Track Order', screen: 'TrackOrder', icon: ImagePath.track_order, logiReq: true },
+    { id: 13, name: 'Share App', screen: 'ShareApp', icon: ImagePath.share_new, logiReq: false },
 
   ]
 
@@ -117,7 +118,9 @@ const CustomDrawerContent = (props) => {
         props.navigation.navigate(item.screen, { page: item.params });
       } else if (item.screen == 'DeleteAccount') {
         onDeleteAccount();
-      } else {
+      } else if(item.screen == 'ShareApp'){
+        onShareApp();
+      }else {
         props.navigation.navigate(item.screen);
       }
     }
@@ -135,6 +138,21 @@ const CustomDrawerContent = (props) => {
         let emailUrl = `mailto:${SUPORT_EMAIL}`
         await Linking.openURL(emailUrl)
       }
+    } catch (error) {
+      if (__DEV__) {
+        console.log(error)
+      }
+      Toast.show('Something went Wrong')
+    }
+  })
+
+  const onShareApp = useCallback(async () => {
+    try {
+      let text = 'Discover, explore, and enjoy the world of Bengali books with the Boimela Dot In app! Install Now-'
+      let shareContent = {
+        message: `${text} ${APP_LINK}`,
+      }
+      const result = await Share.share(shareContent);
     } catch (error) {
       if (__DEV__) {
         console.log(error)

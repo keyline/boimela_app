@@ -36,8 +36,8 @@ export const styles = StyleSheet.create({
         width: '90%',
         textAlign: 'center',
         marginVertical: '0.5%',
-        fontSize: 12
-        // color: Colors.lightGrey
+        fontSize: 12,
+        color: Colors.grey
     },
     flex: {
         flexDirection: 'row',
@@ -84,10 +84,12 @@ export const styles = StyleSheet.create({
     },
     cartlogo: {
         width: 20,
-        height: 20
+        height: 20,
+        tintColor: Colors.light_blue
     },
     carttext: {
         marginLeft: '4%',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: Colors.light_blue
     }
 })
